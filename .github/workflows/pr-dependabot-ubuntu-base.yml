@@ -6,8 +6,8 @@ on:
     branches:
       - main
     paths:
-      - '/src/images/ubuntu-base/Dockerfile'
-      - '/src/images/ubuntu-base/docker-bake.hcl'
+      - './src/images/ubuntu-base/Dockerfile'
+      - './src/images/ubuntu-base/docker-bake.hcl'
 
 permissions:
   pull-requests: write
@@ -41,7 +41,7 @@ jobs:
         uses: docker/bake-action@v5
         with:
           targets: test
-          workdir: "/src/images/${{env.DOCKER_IMAGE}}"
+          workdir: "./src/images/${{env.DOCKER_IMAGE}}"
 
       - name: 'dependabot metadata'
         id: metadata
