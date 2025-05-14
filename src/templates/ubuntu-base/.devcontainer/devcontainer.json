@@ -1,0 +1,4 @@
+{
+  "image": "public.ecr.aws/f7i0q1v8/devcontainer/ubuntu-base:jammy",
+  "name": "ubuntu-base"
+}

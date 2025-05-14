@@ -1,0 +1,21 @@
+{
+  "id": "golang",
+  "version": "1.0.0",
+  "name": "golang",
+  "description": "",
+  "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/golang/README.md",
+  "containerEnv": {
+    "GOROOT": "/usr/local/go",
+    "PATH": "/usr/local/go/bin:${PATH}"
+  },
+  "options": {
+    "version": {
+        "type": "string",
+        "proposals": [
+            "1.22.10"
+        ],
+        "default": "1.22.10",
+        "description": "Select or enter an Golang version."
+    }
+  }
+}
