@@ -1,0 +1,7 @@
+{
+  "id": "github-cli",
+  "version": "1.0.0",
+  "name": "github-cli",
+  "description": "",
+  "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/github-cli/README.md"
+}
