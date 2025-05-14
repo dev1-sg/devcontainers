@@ -6,6 +6,10 @@ readonly USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
 readonly HOME="/home/${USERNAME}"
 readonly FEATURE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+readonly AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID:-""}"
+readonly AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY:-""}"
+readonly AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-""}"
+
 function install_deps() {
     install \
         sudo \
