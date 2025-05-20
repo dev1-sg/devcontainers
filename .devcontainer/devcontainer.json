@@ -2,13 +2,18 @@
   "image": "public.ecr.aws/f7i0q1v8/devcontainer/ubuntu-base:jammy",
   "name": "dev1-sg-devcontainers",
   "features": {
-      "ghcr.io/dev1-sg/devcontainers/common-utils:1": {},
-      "ghcr.io/dev1-sg/devcontainers/docker-in-docker:latest": {},
-      "ghcr.io/dev1-sg/devcontainers/github-cli:1": {}
+      "ghcr.io/dev1-sg/devcontainers/aws-cli:1": {},
+      "ghcr.io/dev1-sg/devcontainers/common-utils:latest": {},
+      "ghcr.io/dev1-sg/devcontainers/docker-outside-of-docker:1": {},
+      "ghcr.io/dev1-sg/devcontainers/github-cli:1": {},
+      "ghcr.io/dev1-sg/devcontainers/gitlab-cli:1": {},
+      "ghcr.io/dev1-sg/devcontainers/golang:1": {},
+      "ghcr.io/dev1-sg/devcontainers/node:1": {},
+      "ghcr.io/dev1-sg/devcontainers/terraform:1": {}
   },
   "customizations": {
     "vscode": {
-      "settings": {"terminal.integrated.defaultProfile.linux": "zsh"},
+      "settings": {"terminal.integrated.defaultProfile.linux": "bash"},
     "extensions": ["ms-vscode-remote.remote-containers", "golang.Go"]
     }
   },
