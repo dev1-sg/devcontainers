@@ -1,0 +1,21 @@
+{
+  "id": "node",
+  "version": "1.0.0",
+  "name": "node",
+  "description": "",
+  "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/node/README.md",
+  "containerEnv": {
+    "PNPM_HOME": "/opt/pnpm",
+    "PATH": "/opt/pnpm:${PATH}"
+  },
+  "options": {
+    "version": {
+        "type": "string",
+        "proposals": [
+            "22.15.1"
+        ],
+        "default": "22.15.1",
+        "description": "Select or enter an Node.js version."
+    }
+  }
+}
