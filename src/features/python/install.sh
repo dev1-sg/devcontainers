@@ -21,7 +21,8 @@ function install() {
 }
 
 function install_python() {
-    sudo apt install -y python3.13
+    export DEBIAN_FRONTEND=noninteractive
+    sudo apt install -y --no-install-recommends python3.13
     pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir poetry
 }
