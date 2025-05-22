@@ -9,6 +9,7 @@
       "ghcr.io/dev1-sg/devcontainers/gitlab-cli:1": {},
       "ghcr.io/dev1-sg/devcontainers/golang:1": {},
       "ghcr.io/dev1-sg/devcontainers/node:1": {},
+      "ghcr.io/dev1-sg/devcontainers/python:1": {},
       "ghcr.io/dev1-sg/devcontainers/terraform:1": {}
   },
   "customizations": {
