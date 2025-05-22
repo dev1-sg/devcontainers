@@ -16,12 +16,12 @@ function install() {
     $(which sudo) apt-get update
     export DEBIAN_FRONTEND=noninteractive
     $(which sudo) apt-get install -y --no-install-recommends "$@"
-    sudo add-apt-repository ppa:deadsnakes/ppa -y
+    sudo add-apt-repository -y ppa:deadsnakes/ppa
     sudo apt-get update
 }
 
 function install_python() {
-    sudo apt install python3.13
+    sudo apt install -y python3.13
     pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir poetry
 }
