@@ -1,6 +1,6 @@
 {
   "id": "python",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "python",
   "description": "",
   "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/python/README.md",
@@ -11,15 +11,5 @@
     "POETRY_NO_INTERACTION": "1",
     "POETRY_VIRTUALENVS_CREATE": "false",
     "PATH": "/opt/poetry/bin:${PATH}"
-  },
-  "options": {
-    "version": {
-        "type": "string",
-        "proposals": [
-            "3.13.3"
-        ],
-        "default": "3.13.3",
-        "description": "Select or enter an Python version."
-    }
   }
 }
