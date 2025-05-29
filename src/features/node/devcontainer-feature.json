@@ -1,9 +1,9 @@
 {
-  "id": "python",
-  "version": "1.0.0",
-  "name": "python",
+  "id": "node",
+  "version": "1.0.1",
+  "name": "node",
   "description": "",
-  "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/python/README.md",
+  "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/node/README.md",
   "containerEnv": {
     "PNPM_HOME": "/opt/pnpm",
     "PATH": "/opt/pnpm:${PATH}"
