@@ -27,13 +27,11 @@ APT_PACKAGES=(
     xz-utils
 )
 
-
 function install_apt() {
     sudo apt-get update
     export DEBIAN_FRONTEND=noninteractive
     sudo apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
 }
-
 
 function install_terraform() {
     cd /tmp

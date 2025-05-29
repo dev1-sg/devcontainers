@@ -1,6 +1,6 @@
 {
   "id": "terraform",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "terraform",
   "description": "",
   "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/terraform/README.md"
