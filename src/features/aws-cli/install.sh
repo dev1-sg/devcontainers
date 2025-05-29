@@ -6,9 +6,9 @@ ARCH="$(uname -m)"
 AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID:-""}"
 AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY:-""}"
 AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-""}"
-DEVCONTAINER_SOURCE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DEVCONTAINER_USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
 DEVCONTAINER_HOME="/home/${USERNAME}"
+FEATURE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 case ${ARCH} in
     x86_64) ARCH="x86_64";;
@@ -36,7 +36,7 @@ function main() {
     install_apt
     cd "${HOME}"
     curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-${ARCH}.zip" -o ./awscliv2.zip
-    cat "${DEVCONTAINER_SOURCE}/files/public-key" > ./public-key
+    cat "${FEATURE_DIR}/files/public-key" > ./public-key
     gpg --import ./public-key
     curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-${ARCH}.zip.sig -o ./awscliv2.sig
     gpg --verify ./awscliv2.sig ./awscliv2.zip
