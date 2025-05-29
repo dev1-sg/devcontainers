@@ -36,7 +36,7 @@ function main() {
     install_apt
     cd "${HOME}"
     curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-${ARCH}.zip" -o ./awscliv2.zip
-    cat "${FEATURE_DIR}/files/public-key" > ./public-key
+    cat "${DEVCONTAINER_SOURCE}/files/public-key" > ./public-key
     gpg --import ./public-key
     curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-${ARCH}.zip.sig -o ./awscliv2.sig
     gpg --verify ./awscliv2.sig ./awscliv2.zip
