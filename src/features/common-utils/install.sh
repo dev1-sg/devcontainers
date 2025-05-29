@@ -2,43 +2,39 @@
 
 set -exo pipefail
 
-function install_common_utils() {
-    debian_install \
-        apt-transport-https \
-        apt-utils \
-        bash-completion \
-        bzip2 \
-        ca-certificates \
-        curl \
-        git \
-        gpg \
-        gpg-agent \
-        init-system-helpers \
-        jq \
-        less \
-        lsb-release \
-        lsof \
-        nano \
-        net-tools \
-        openssh-client \
-        procps \
-        psmisc \
-        rsync \
-        strace \
-        sudo \
-        tree \
-        unzip \
-        vim \
-        wget \
-        xz-utils \
-        zip \
-        zsh
-}
+DEVCONTAINER_USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
+DEVCONTAINER_HOME="/home/${USERNAME}"
 
-function debian_install() {
-    $(which sudo) apt-get update
+APT_PACKAGES=(
+    bash-completion
+    build-essential
+    ca-certificates
+    curl
+    file
+    git
+    gpg
+    jq
+    lsb-release
+    lsof
+    nano
+    net-tools
+    nano
+    openssh-client
+    screen
+    strace
+    sudo
+    tree
+    unzip
+    wget
+    xz-utils
+    zip
+    zsh
+)
+
+function install_apt() {
+    sudo apt-get update
     export DEBIAN_FRONTEND=noninteractive
-    $(which sudo) apt-get install -y --no-install-recommends "$@"
+    sudo apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
 }
 
-install_common_utils
+install_apt

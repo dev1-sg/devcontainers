@@ -2,28 +2,38 @@
 
 set -exo pipefail
 
+ARCH="$(uname -m)"
+DEVCONTAINER_USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
+DEVCONTAINER_HOME="/home/${USERNAME}"
 TERRAFORM_VERSION=1.9.6
 TERRAGRUNT_VERSION=0.67.14
 TERRAFORMDOCS_VERSION=0.19.0
 
-function install_deps() {
-    install \
-        sudo \
-        curl \
-        ca-certificates \
-        wget \
-        unzip \
-        make \
-        jq
+case ${ARCH} in
+    x86_64) ARCH="amd64";;
+    aarch64 | armv8*) ARCH="arm64";;
+    *) echo "(!) Architecture ${ARCH} unsupported"; exit 1 ;;
+esac
+
+APT_PACKAGES=(
+    ca-certificates
+    curl
+    gpg
+    gpg-agent
+    jq
+    make
+    unzip
+    wget
+    xz-utils
+)
+
+
+function install_apt() {
+    sudo apt-get update
+    export DEBIAN_FRONTEND=noninteractive
+    sudo apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
 }
 
-function install() {
-    $(which sudo) apt-get update
-    export DEBIAN_FRONTEND=noninteractive
-    $(which sudo) apt-get install -y --no-install-recommends "$@"
-    sudo apt-get clean
-    sudo rm -rf /var/lib/apt/lists/*
-}
 
 function install_terraform() {
     cd /tmp
@@ -49,13 +59,7 @@ function install_terraform_docs() {
 }
 
 function main() {
-    ARCH="$(uname -m)"
-    case ${ARCH} in
-        x86_64) ARCH="linux_amd64";;
-        aarch64 | armv8*) ARCH="linux_arm64";;
-        *) echo "(!) Architecture ${ARCH} unsupported"; exit 1 ;;
-    esac
-    install_deps
+    install_apt
     install_terraform
     install_terragrunt
     install_terraform_docs

@@ -1,6 +1,6 @@
 {
   "id": "golang",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "golang",
   "description": "",
   "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/features/golang/README.md",

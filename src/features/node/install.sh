@@ -2,42 +2,43 @@
 
 set -exo pipefail
 
-VERSION=${VERSION:-"22.15.1"}
+ARCH="$(uname -m)"
+DEVCONTAINER_USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
+DEVCONTAINER_HOME="/home/${USERNAME}"
+NODE_VERSION=${VERSION:-"22.15.1"}
 
-function install_deps() {
-    install \
-        sudo \
-        wget \
-        ca-certificates \
-        xz-utils
-}
+case ${ARCH} in
+    x86_64) ARCH="linux-x64";;
+    aarch64 | armv8*) ARCH="linux-arm64";;
+    *) echo "(!) Architecture ${ARCH} unsupported"; exit 1 ;;
+esac
 
-function install() {
-    $(which sudo) apt-get update
+APT_PACKAGES=(
+    ca-certificates
+    curl
+    gpg
+    gpg-agent
+    software-properties-common
+    unzip
+    wget
+    xz-utils
+)
+
+function install_apt() {
+    sudo apt-get update
     export DEBIAN_FRONTEND=noninteractive
-    $(which sudo) apt-get install -y --no-install-recommends "$@"
-    sudo apt-get clean
-    sudo rm -rf /var/lib/apt/lists/*
-}
-
-function install_node() {
-    ARCH="$(uname -m)"
-    case ${ARCH} in
-        x86_64) ARCH="linux-x64";;
-        aarch64 | armv8*) ARCH="linux-arm64";;
-        *) echo "(!) Architecture ${ARCH} unsupported"; exit 1 ;;
-    esac
-    wget -q "https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-${ARCH}.tar.xz" -P "/tmp"
-    tar -xvf "/tmp/node-v${VERSION}-${ARCH}.tar.xz" -C "/tmp"
-    mv /tmp/node-v${VERSION}-${ARCH}/bin/* /usr/local/bin
-    mv /tmp/node-v${VERSION}-${ARCH}/lib/* /usr/local/lib
-    rm -rf "/tmp/node-v${VERSION}-${ARCH}" "/tmp/node-v${VERSION}-${ARCH}.tar.xz"
-    npm install -g pnpm typescript
+    sudo apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
 }
 
 function main() {
-    install_deps
-    install_node
+    install_apt
+    cd "${HOME}"
+    wget -q "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-${ARCH}.tar.xz" -P "/tmp"
+    tar -xvf "/tmp/node-v${NODE_VERSION}-${ARCH}.tar.xz" -C "/tmp"
+    mv /tmp/node-v${NODE_VERSION}-${ARCH}/bin/* /usr/local/bin
+    mv /tmp/node-v${NODE_VERSION}-${ARCH}/lib/* /usr/local/lib
+    rm -rf "/tmp/node-v${NODE_VERSION}-${ARCH}" "/tmp/node-v${NODE_VERSION}-${ARCH}.tar.xz"
+    npm install -g pnpm typescript
 }
 
 main
