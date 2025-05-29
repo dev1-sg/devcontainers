@@ -11,11 +11,7 @@
 }
 ```
 
-## Options
 
-| Options Id | Description | Type | Default Value |
-|-----|-----|-----|-----|
-| version | Select or enter an Node.js version. | string | 22.15.1 |
 
 
 
