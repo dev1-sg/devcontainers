@@ -21,6 +21,7 @@ APT_PACKAGES=(
     ca-certificates
     curl
     gpg
+    gpg-agent
     unzip
 )
 
