@@ -27,7 +27,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
     && chmod 0440 /etc/sudoers.d/$USER \
     && passwd -d $USER \
-    && git config --system --add safe.directory '*'
+    && git config --system --add safe.directory '*' \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
