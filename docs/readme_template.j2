@@ -13,3 +13,20 @@ This repository is a rework from the original [devcontainers](https://github.com
 - [**devcontainer images**](https://github.com/devcontainers/images): pre-built devcontainer images
 
 The **`src`** folder contains customizations and configurations that layer on top of these resources.
+
+readme Docs are updated daily. Please check the regsitry gallery for the latest updates.
+
+[https://gallery.ecr.aws/dev1-sg/](https://gallery.ecr.aws/dev1-sg/)
+
+## Images
+
+
+| # | Repository Name | Group | URI | Latest Tag | Size |
+|---|-----------------|-------|-----|------------|------|
+{% for item in items %}
+| {{ item.number }} | [{{ item.name }}](https://gallery.ecr.aws/dev1-sg/{{ item.name }}) | {{ item.group }} | {{ item.uri }} | {{ item.latest_tag }} | {{ item.size }} |
+{% endfor %}
+
+---
+
+last_updated: {{ updated_at }}
