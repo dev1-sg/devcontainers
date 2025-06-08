@@ -11,7 +11,7 @@ from jinja2 import Template
 INPUT_TEMPLATE = "readme_template.j2"
 OUTPUT_README = "../readme.md"
 REGISTRY_ALIAS = "dev1-sg"
-REGISTRY_GROUP = "ci"
+REGISTRY_GROUP = "devcontainer"
 REGISTRY_URI = f"public.ecr.aws/{REGISTRY_ALIAS}"
 REGISTRY_ENDPOINT_REGION = "us-east-1"
 REGISTRY_ENDPOINT_URL = f"https://ecr-public.{REGISTRY_ENDPOINT_REGION}.amazonaws.com"
