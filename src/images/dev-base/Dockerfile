@@ -28,6 +28,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && chmod 0440 /etc/sudoers.d/$USER \
     && passwd -d $USER \
     && git config --system --add safe.directory '*'
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=node /usr/local/bin /usr/local/bin
 COPY --from=node /usr/local/lib /usr/local/lib
