@@ -23,9 +23,9 @@ readme Docs are updated daily. Please check the regsitry gallery for the latest 
 
 | # | Repository Name | Group | URI | Latest Tag | Size |
 |---|-----------------|-------|-----|------------|------|
-| 1 | [devcontainer/dev-base](https://gallery.ecr.aws/dev1-sg/devcontainer/dev-base) | devcontainer | public.ecr.aws/dev1-sg/devcontainer/dev-base | 1.0.0 | 339.23 MB |
-| 2 | [devcontainer/ubuntu-base](https://gallery.ecr.aws/dev1-sg/devcontainer/ubuntu-base) | devcontainer | public.ecr.aws/dev1-sg/devcontainer/ubuntu-base | jammy | 153.86 MB |
+| 1 | [devcontainer/dev-base](https://gallery.ecr.aws/dev1-sg/devcontainer/dev-base) | devcontainer | public.ecr.aws/dev1-sg/devcontainer/dev-base | 1.0.0 | 267.61 MB |
+| 2 | [devcontainer/ubuntu-base](https://gallery.ecr.aws/dev1-sg/devcontainer/ubuntu-base) | devcontainer | public.ecr.aws/dev1-sg/devcontainer/ubuntu-base | jammy | 113.04 MB |
 
 ---
 
-last_updated: ('Mon Jun  9 02:12:33 2025', '+08')
+last_updated: ('Mon Jun  9 16:53:57 2025', '+08')
