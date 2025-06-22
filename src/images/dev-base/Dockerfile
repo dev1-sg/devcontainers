@@ -3,7 +3,7 @@
 FROM public.ecr.aws/dev1-sg/base/node:24.2.0 AS node
 FROM public.ecr.aws/dev1-sg/base/python:3.13.5 AS python
 FROM public.ecr.aws/dev1-sg/base/golang:1.24.4 AS golang
-FROM public.ecr.aws/dev1-sg/base/ubuntu:jammy AS base
+FROM public.ecr.aws/dev1-sg/base/ubuntu:24.04 AS base
 
 ARG USER=vscode
 ARG USER_ID=1000

@@ -1,6 +1,6 @@
 # syntax=docker.io/docker/dockerfile:1
 
-FROM public.ecr.aws/dev1-sg/base/ubuntu:jammy AS base
+FROM public.ecr.aws/dev1-sg/base/ubuntu:24.04 AS base
 
 ARG USER=vscode
 ARG USER_ID=1000
