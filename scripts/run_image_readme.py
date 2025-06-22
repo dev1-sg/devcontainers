@@ -11,7 +11,7 @@ AWS_ECR_PUBLIC_REGION = "us-east-1"
 AWS_ECR_PUBLIC_REPOSITORY_GROUP = "devcontainer"
 
 README_TEMPLATE_PATH = "./templates/image_readme.j2"
-SRC_PATH = "./src"
+SRC_PATH = "./src/images/"
 
 now = datetime.now().astimezone()
 updated_time = now.strftime("%c"), now.tzname()

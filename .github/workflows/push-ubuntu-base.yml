@@ -95,7 +95,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: python3 scripts/run_image_readme.py ${{ env.AWS_ECR_PUBLIC_IMAGE_NAME }}
+      - run: python3 scripts/generate_image_readme.py
 
       - name: 'commit update'
         env:
@@ -107,7 +107,7 @@ jobs:
           git config pull.rebase false
           git checkout main
           git pull origin main
-          git add ./src/images/${{ env.AWS_ECR_PUBLIC_IMAGE_NAME }}/readme.md
+          git add .
           git commit -m 'Automated documentation update [skip ci]' || echo "No changes to commit"
 
           if ! git push origin main; then
