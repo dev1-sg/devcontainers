@@ -1,7 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1
 
 FROM public.ecr.aws/dev1-sg/base/node:24.2.0 AS node
-FROM public.ecr.aws/dev1-sg/base/python:3.13.4 AS python
+FROM public.ecr.aws/dev1-sg/base/python:3.13.5 AS python
 FROM public.ecr.aws/dev1-sg/base/golang:1.24.4 AS golang
 FROM public.ecr.aws/dev1-sg/base/ubuntu:jammy AS base
 
