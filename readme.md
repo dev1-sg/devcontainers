@@ -22,7 +22,8 @@ readme Docs are updated daily. Please check the regsitry gallery for the latest 
 
 | # | Repository Name | Group | URI | Latest Tag | Image Size (MB)
 |---|---|---|---|---|---
+| 1 | [devcontainer/ubuntu-base](https://gallery.ecr.aws/dev1-sg/devcontainer/ubuntu-base) | devcontainer | public.ecr.aws/dev1-sg/devcontainer/ubuntu-base | latest | 118.07
 
 ---
 
-last_updated: Sun Jun 22 21:11:54 2025 +08
+last_updated: Sun Jun 22 21:26:34 2025 +08
