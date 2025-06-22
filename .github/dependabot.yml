@@ -12,7 +12,6 @@ updates:
   - package-ecosystem: docker
     directories:
       - "/src/images/ubuntu-base"
-      - "/src/images/dev-base"
     schedule:
       interval: daily
     commit-message:
