@@ -1,13 +1,12 @@
 ---
-name: 'Push dev-base'
+name: Push dev-base
 
 on:
   push:
     branches:
       - main
     paths:
-      - './src/images/dev-base/Dockerfile'
-      - './src/images/dev-base/docker-bake.hcl'
+      - src/images/dev-base/*
   workflow_dispatch:
 
 permissions:
@@ -17,58 +16,55 @@ permissions:
 env:
   AWS_DEFAULT_REGION: us-east-1
   AWS_OIDC_ROLE_ARN: ${{ secrets.AWS_OIDC_ROLE_ARN }}
-  DOCKER_IMAGE_GROUP: devcontainer
-  DOCKER_IMAGE: dev-base
+  AWS_ECR_PUBLIC_REPOSITORY_GROUP: ci
+  AWS_ECR_PUBLIC_IMAGE_NAME: dev-base
   TZ: Asia/Singapore
 
 jobs:
   build-push:
     runs-on: ubuntu-latest
     steps:
-      - name: 'checkout'
+      - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          show-progress: false
 
-      - name: 'set shell options globally'
+      - name: Set shell options
         run: set -euxo pipefail
-        shell: bash
 
-      - name: 'setup qemu'
+      - name: Setup qemu
         uses: docker/setup-qemu-action@v3
 
-      - name: 'setup docker buildx'
+      - name: Setup docker buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: 'configure aws credentials'
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{env.AWS_OIDC_ROLE_ARN}}
-          role-session-name: aws-oidc-${{github.repository.name}}-${{github.run_id}}
-          aws-region: ${{env.AWS_DEFAULT_REGION}}
+          role-to-assume: ${{ env.AWS_OIDC_ROLE_ARN }}
+          role-session-name: aws-oidc-${{ github.repository.name }}-${{ github.run_id }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
-      - name: 'login to amazon ecr public'
+      - name: Login to AWS ECR Public Registry
         id: login-ecr-public
         uses: aws-actions/amazon-ecr-login@v2
         with:
           registry-type: public
 
-      - name: 'extract version from dockerfile'
+      - name: Extract Version from Dockerfile
         id: extract_version
         run: |
-          DOCKER_IMAGE_TAG=$(cat ./src/images/${{env.DOCKER_IMAGE}}/version)
-          echo "DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG#v}" >> $GITHUB_ENV
-          echo "DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG#v}"
+          AWS_ECR_PUBLIC_IMAGE_TAG=$(cat ./src/images/${{ env.AWS_ECR_PUBLIC_IMAGE_NAME }}/version)
+          echo "AWS_ECR_PUBLIC_IMAGE_TAG=${AWS_ECR_PUBLIC_IMAGE_TAG#v}" >> $GITHUB_ENV
+          echo "AWS_ECR_PUBLIC_IMAGE_TAG=${AWS_ECR_PUBLIC_IMAGE_TAG#v}"
 
-      - name: 'create ecr-public repository'
+      - name: Create AWS ECR Public Repository
         run: |
-          aws ecr-public create-repository --repository-name ${{env.DOCKER_IMAGE_GROUP}}/${{env.DOCKER_IMAGE}} --region ${{env.AWS_DEFAULT_REGION}} || true
+          aws ecr-public create-repository --repository-name ${{ env.AWS_ECR_PUBLIC_REPOSITORY_GROUP }}/${{ env.AWS_ECR_PUBLIC_IMAGE_NAME }} --region ${{ env.AWS_DEFAULT_REGION }} || true
 
-      - name: 'build-push'
+      - name: Docker build & push
         uses: docker/bake-action@v5
         with:
           targets: push
-          workdir: ./src/images/${{env.DOCKER_IMAGE}}
+          workdir: ./src/images/${{ env.AWS_ECR_PUBLIC_IMAGE_NAME }}
 
   run-push:
     runs-on: ubuntu-latest
@@ -84,7 +80,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: 'pip'
-          cache-dependency-path: docs/requirements.txt
+          cache-dependency-path: requirements.txt
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -98,11 +94,8 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - run: pip install -r requirements.txt
-        working-directory: docs
 
-      - name: Run Python script
-        working-directory: docs
-        run: python3 query-${{ env.DOCKER_IMAGE }}-image.py
+      - run: python3 scripts/run_image_readme.py ${{ env.AWS_ECR_PUBLIC_IMAGE_NAME }}
 
       - name: 'commit update'
         env:
@@ -114,7 +107,7 @@ jobs:
           git config pull.rebase false
           git checkout main
           git pull origin main
-          git add ./src/images/${{ env.DOCKER_IMAGE }}/readme.md
+          git add ./src/images/${{ env.AWS_ECR_PUBLIC_IMAGE_NAME }}/readme.md
           git commit -m 'Automated documentation update [skip ci]' || echo "No changes to commit"
 
           if ! git push origin main; then

@@ -20,10 +20,9 @@ readme Docs are updated daily. Please check the regsitry gallery for the latest 
 
 ## Images
 
-
-| # | Repository Name | Group | URI | Latest Tag | Size |
-|---|-----------------|-------|-----|------------|------|
+| # | Repository Name | Group | URI | Latest Tag | Image Size (MB)
+|---|---|---|---|---|---
 
 ---
 
-last_updated: ('Sun Jun 22 16:29:55 2025', '+08')
+last_updated: Sun Jun 22 21:11:54 2025 +08
