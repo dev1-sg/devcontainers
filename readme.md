@@ -26,4 +26,4 @@ readme Docs are updated daily. Please check the regsitry gallery for the latest 
 
 ---
 
-last_updated: Tue Jul  1 16:33:52 2025 +08
+last_updated: Wed Jul  2 16:33:41 2025 +08
