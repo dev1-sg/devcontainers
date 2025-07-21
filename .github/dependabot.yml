@@ -12,6 +12,7 @@ updates:
   - package-ecosystem: docker
     directories:
       - "/src/images/ubuntu-base"
+      - "/src/images/ubuntu-python"
     schedule:
       interval: daily
     commit-message:
