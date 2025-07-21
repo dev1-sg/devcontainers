@@ -2,12 +2,13 @@
 
 FROM public.ecr.aws/dev1-sg/ubuntu/ubuntu:24.04 AS base
 
+ARG PYTHON_VERSION=3.12
 ARG USER=vscode
 ARG USER_ID=1000
 ARG PRIMARY_GROUP_ID=1000
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    sudo bash git curl ca-certificates jq locales-all \
+    sudo bash git curl ca-certificates jq locales-all python${PYTHON_VERSION} python3-pip python3-venv \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -25,5 +26,7 @@ ENV TZ=Asia/Singapore \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
+
+ENV PATH="/home/vscode/.pyenv/bin:${PATH}"
 
 WORKDIR "/home/${USER}"
