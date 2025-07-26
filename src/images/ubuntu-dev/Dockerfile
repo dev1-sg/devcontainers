@@ -7,8 +7,12 @@ ARG USER=vscode
 ARG USER_ID=1000
 ARG PRIMARY_GROUP_ID=1000
 
+ARG NVM_VERSION=0.40.3
+ARG PYTHON_VERSION=3.13.5
+ARG NODE_VERSION=24.4.1
+
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    sudo bash git curl ca-certificates jq locales-all python${PYTHON_VERSION} python3-pip python3-venv \
+    sudo bash git curl ca-certificates jq locales-all \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -25,8 +29,15 @@ USER "${USER}"
 ENV TZ=Asia/Singapore \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8
+    LC_ALL=en_US.UTF-8 \
+    HOME="/home/${USER}"
 
-ENV PATH="/home/vscode/.pyenv/bin:${PATH}"
+ENV PATH="${HOME}/.local/bin:${PATH}"
 
-WORKDIR "/home/${USER}"
+WORKDIR "${HOME}"
+
+RUN curl -fsSL https://astral.sh/uv/install.sh | bash \
+    && uv python install "${PYTHON_VERSION}" --default
+
+RUN curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh" | bash \
+    && \. "${HOME}/.nvm/nvm.sh"

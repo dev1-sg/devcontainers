@@ -15,15 +15,15 @@ variable "AWS_ECR_PUBLIC_URL" {
 }
 
 variable "AWS_ECR_PUBLIC_IMAGE_NAME" {
-  default = "ubuntu-python"
+  default = "ubuntu-dev"
 }
 
 variable "AWS_ECR_PUBLIC_IMAGE_TAG" {
-  default = "dev"
+  default = "latest"
 }
 
 variable "AWS_ECR_PUBLIC_IMAGE_URI" {
-  default = "public.ecr.aws/dev1-sg/devcontainer/ubuntu-python:latest"
+  default = "public.ecr.aws/dev1-sg/devcontainer/ubuntu-dev:latest"
 }
 
 variable "AWS_ECR_PUBLIC_REPOSITORY_GROUP" {

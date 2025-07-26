@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 env:
-  GH_TOKEN: ${{secrets.GH_TOKEN}}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   deploy:
@@ -33,7 +33,7 @@ jobs:
           base-path-to-templates: "./src/templates"
           generate-docs: "true"
         env:
-          GITHUB_TOKEN: ${{env.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ env.GH_TOKEN }}
 
       - name: 'publish features'
         uses: devcontainers/action@v1
@@ -42,12 +42,12 @@ jobs:
           base-path-to-features: "./src/features"
           generate-docs: "true"
         env:
-          GITHUB_TOKEN: ${{env.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ env.GH_TOKEN }}
 
       - name: 'create pr for documentation'
         id: push_image_info
         env:
-          GITHUB_TOKEN: ${{env.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ env.GH_TOKEN }}
         run: |
           echo "Start."
           git config --global user.email github-actions[bot]@users.noreply.github.com

@@ -1,4 +1,0 @@
-{
-  "image": "public.ecr.aws/dev1-sg/devcontainer/ubuntu-python:3.12-24.04",
-  "name": "ubuntu-python"
-}
