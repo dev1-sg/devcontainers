@@ -42,7 +42,7 @@ function install_apt() {
 
 function install_terraform() {
     cd /tmp
-    wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip"
+    wget -q "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip"
     unzip "/tmp/terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip" -d /tmp
     sudo mv /tmp/terraform /usr/local/bin/terraform
     sudo chmod +x /usr/local/bin/terraform
@@ -50,14 +50,14 @@ function install_terraform() {
 
 function install_terragrunt() {
     cd /tmp
-    wget "https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_${ARCH}"
+    wget -q "https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_${ARCH}"
     sudo mv "/tmp/terragrunt_linux_${ARCH}" /usr/local/bin/terragrunt
     sudo chmod +x /usr/local/bin/terragrunt
 }
 
 function install_terraform_docs() {
     cd /tmp
-    wget "https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORMDOCS_VERSION}/terraform-docs-v${TERRAFORMDOCS_VERSION}-linux-${ARCH/_/-}.tar.gz"
+    wget -q "https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORMDOCS_VERSION}/terraform-docs-v${TERRAFORMDOCS_VERSION}-linux-${ARCH/_/-}.tar.gz"
     tar -xvf "terraform-docs-v${TERRAFORMDOCS_VERSION}-linux-${ARCH/_/-}.tar.gz"
     sudo mv /tmp/terraform-docs /usr/local/bin/terraform-docs
     sudo chmod +x /usr/local/bin/terraform-docs
