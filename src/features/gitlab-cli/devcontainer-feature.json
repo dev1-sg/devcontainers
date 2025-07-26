@@ -1,6 +1,6 @@
 {
   "id": "gitlab-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "gitlab-cli",
   "description": "",
   "documentationURL": "https://gitlab.com/dev1-sg/devcontainers/blob/main/src/features/gitlab-cli/README.md"

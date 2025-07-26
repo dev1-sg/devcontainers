@@ -32,9 +32,8 @@ APT_PACKAGES=(
 )
 
 function install_apt() {
-    sudo apt-get update
-    export DEBIAN_FRONTEND=noninteractive
-    sudo apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
+    $(which sudo) apt-get update
+    DEBIAN_FRONTEND=noninteractive $(which sudo) apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
 }
 
 install_apt

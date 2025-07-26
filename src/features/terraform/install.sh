@@ -2,14 +2,16 @@
 
 set -exo pipefail
 
-ARCH="$(uname -m)"
 DEVCONTAINER_USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
 DEVCONTAINER_HOME="/home/${USERNAME}"
+
 TERRAFORM_VERSION=1.9.6
 TERRAGRUNT_VERSION=0.67.14
 TERRAFORMDOCS_VERSION=0.19.0
 
-case ${ARCH} in
+ARCH="$(uname -m)"
+
+case "${ARCH}" in
     x86_64) ARCH="amd64";;
     aarch64 | armv8*) ARCH="arm64";;
     *) echo "(!) Architecture ${ARCH} unsupported"; exit 1 ;;
@@ -27,10 +29,15 @@ APT_PACKAGES=(
     xz-utils
 )
 
+function clean_up() {
+    sudo rm -rf "/tmp/terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip" "/tmp/terragrunt_linux_${ARCH}" "/tmp/terraform-docs-v${TERRAFORMDOCS_VERSION}-linux-${ARCH/_/-}.tar.gz"
+}
+
+trap clean_up EXIT
+
 function install_apt() {
-    sudo apt-get update
-    export DEBIAN_FRONTEND=noninteractive
-    sudo apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
+    $(which sudo) apt-get update
+    DEBIAN_FRONTEND=noninteractive $(which sudo) apt-get install -y --no-install-recommends "${APT_PACKAGES[@]}"
 }
 
 function install_terraform() {
