@@ -7,7 +7,7 @@ ARG USER_ID=1000
 ARG PRIMARY_GROUP_ID=1000
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    sudo bash git curl ca-certificates jq locales-all \
+    sudo git curl ca-certificates locales \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

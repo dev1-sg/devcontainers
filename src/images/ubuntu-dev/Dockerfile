@@ -12,7 +12,7 @@ ARG PYTHON_VERSION=3.13.5
 ARG NODE_VERSION=24.4.1
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    sudo bash git curl ca-certificates jq locales-all \
+    sudo git curl ca-certificates locales \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
