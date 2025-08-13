@@ -1,7 +1,0 @@
-{
-  "id": "huggingface-cli",
-  "version": "1.0.0",
-  "name": "huggingface-cli",
-  "description": "",
-  "documentationURL": "https://gitlab.com/dev1-sg/devcontainers/blob/main/src/features/huggingface-cli/README.md"
-}

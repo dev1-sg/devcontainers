@@ -1,6 +1,6 @@
 {
   "id": "ubuntu-dev",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "ubuntu-dev",
   "description": "",
   "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/templates/ubuntu-dev/README.md",
