@@ -62,7 +62,7 @@ target "settings" {
   ]
   args = {
     PYTHON_VERSION = "${AWS_ECR_PUBLIC_IMAGE_TAG_PYTHON}",
-    NODE_VERSION = "${AWS_ECR_PUBLIC_IMAGE_TAG_NODE}"
+    NODE_VERSION   = "${AWS_ECR_PUBLIC_IMAGE_TAG_NODE}"
   }
 }
 
