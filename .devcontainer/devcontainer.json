@@ -7,7 +7,13 @@
   "customizations": {
     "vscode": {
       "settings": {"terminal.integrated.defaultProfile.linux": "zsh"}
-    }
+    },
+    "extensions": [
+      "github.codespaces",
+	    "ms-vscode-remote.remote-containers",
+      "ms-vscode.js-debug",
+      "ms-python.python"
+    ]
   },
   "containerUser": "vscode",
   "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/vscode/dev1-sg-devcontainers,type=bind,consistency=cached", "workspaceFolder": "/home/vscode",
