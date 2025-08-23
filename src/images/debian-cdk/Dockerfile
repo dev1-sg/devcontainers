@@ -19,7 +19,7 @@ COPY --from=python /usr/local/bin /usr/local/bin
 
 USER root
 
-RUN apt-get update \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh gettext \
     && if [ -d "/home/debian" ]; then userdel -f debian; fi \
     && groupadd --gid "${PRIMARY_GROUP_ID}" "${USER}" \
     && useradd --system --uid "${USER_ID}" --gid "${PRIMARY_GROUP_ID}" -m "${USER}" \
