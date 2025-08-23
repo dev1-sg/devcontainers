@@ -19,7 +19,8 @@ COPY --from=python /usr/local/bin /usr/local/bin
 
 USER root
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh gettext \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    zsh gettext make \
     && if [ -d "/home/debian" ]; then userdel -f debian; fi \
     && groupadd --gid "${PRIMARY_GROUP_ID}" "${USER}" \
     && useradd --system --uid "${USER_ID}" --gid "${PRIMARY_GROUP_ID}" -m "${USER}" \
@@ -78,5 +79,7 @@ ENV TZ=Asia/Singapore \
     HOME="/home/${USER}" \
     PYTHON_VERSION="${PYTHON_VERSION}" \
     NODE_VERSION="${NODE_VERSION}"
+
+ENV PATH="${HOME}/.local/bin:${PATH}"
 
 WORKDIR "${HOME}"
