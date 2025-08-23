@@ -1,0 +1,8 @@
+{
+  "id": "debian-base",
+  "version": "1.0.0",
+  "name": "debian-base",
+  "description": "",
+  "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/templates/debian-base/README.md",
+  "platforms": ["amd64", "arm64"]
+}

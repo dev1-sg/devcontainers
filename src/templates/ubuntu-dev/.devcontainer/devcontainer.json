@@ -1,4 +1,0 @@
-{
-  "image": "public.ecr.aws/dev1-sg/devcontainer/ubuntu-dev:24.04",
-  "name": "ubuntu-dev"
-}

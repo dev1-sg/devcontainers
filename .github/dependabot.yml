@@ -11,8 +11,10 @@ registries:
 updates:
   - package-ecosystem: docker
     directories:
+      - "/src/images/debian-base"
+      - "/src/images/debian-cdk"
+      - "/src/images/debian-cdktf"
       - "/src/images/ubuntu-base"
-      - "/src/images/ubuntu-dev"
     schedule:
       interval: daily
     commit-message:

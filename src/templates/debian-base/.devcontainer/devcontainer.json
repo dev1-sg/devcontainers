@@ -1,0 +1,4 @@
+{
+  "image": "public.ecr.aws/dev1-sg/devcontainer/debian-base:latest",
+  "name": "debian-base"
+}

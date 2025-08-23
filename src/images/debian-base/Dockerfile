@@ -1,8 +1,8 @@
 # syntax=docker.io/docker/dockerfile:1
 
-FROM public.ecr.aws/dev1-sg/base/node:24.5.0-noble AS node
-FROM public.ecr.aws/dev1-sg/base/python:3.13.5-noble AS python
-FROM public.ecr.aws/dev1-sg/base/ubuntu:noble AS base
+FROM public.ecr.aws/dev1-sg/base/node:24.5.0-bookworm AS node
+FROM public.ecr.aws/dev1-sg/base/python:3.13.5-bookworm AS python
+FROM public.ecr.aws/dev1-sg/base/debian:bookworm AS base
 
 ARG USER=vscode
 ARG USER_ID=1000
@@ -20,7 +20,7 @@ COPY --from=python /usr/local/bin /usr/local/bin
 USER root
 
 RUN apt-get update \
-    && if [ -d "/home/ubuntu" ]; then userdel -f ubuntu; fi \
+    && if [ -d "/home/debian" ]; then userdel -f debian; fi \
     && groupadd --gid "${PRIMARY_GROUP_ID}" "${USER}" \
     && useradd --system --uid "${USER_ID}" --gid "${PRIMARY_GROUP_ID}" -m "${USER}" \
     && echo "${USER} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${USER}" \

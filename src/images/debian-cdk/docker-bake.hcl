@@ -19,15 +19,15 @@ variable "AWS_ECR_PUBLIC_REPOSITORY_GROUP" {
 }
 
 variable "AWS_ECR_PUBLIC_IMAGE_NAME" {
-  default = "ubuntu-base"
+  default = "debian-cdk"
 }
 
 variable "AWS_ECR_PUBLIC_IMAGE_TAG" {
-  default = "ubuntu"
+  default = "debian"
 }
 
-variable "AWS_ECR_PUBLIC_IMAGE_TAG_UBUNTU" {
-  default = "ubuntu"
+variable "AWS_ECR_PUBLIC_IMAGE_TAG_DEBIAN" {
+  default = "debian"
 }
 
 variable "AWS_ECR_PUBLIC_IMAGE_TAG_PYTHON" {
@@ -39,7 +39,7 @@ variable "AWS_ECR_PUBLIC_IMAGE_TAG_NODE" {
 }
 
 variable "AWS_ECR_PUBLIC_IMAGE_URI" {
-  default = "public.ecr.aws/dev1-sg/devcontainer/ubuntu-base:latest"
+  default = "public.ecr.aws/dev1-sg/devcontainer/debian-cdk:latest"
 }
 
 target "metadata" {
@@ -79,7 +79,7 @@ target "build" {
   output     = ["type=docker"]
   tags = [
     "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:latest",
-    "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_UBUNTU}",
+    "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_DEBIAN}",
     "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_NODE}-python",
     "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_NODE}-python${AWS_ECR_PUBLIC_IMAGE_TAG_PYTHON}",
   ]
@@ -92,7 +92,7 @@ target "push" {
   platforms  = ["linux/amd64", "linux/arm64"]
   tags = [
     "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:latest",
-    "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_UBUNTU}",
+    "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_DEBIAN}",
     "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_NODE}-python",
     "${AWS_ECR_PUBLIC_URI}/${AWS_ECR_PUBLIC_REPOSITORY_GROUP}/${AWS_ECR_PUBLIC_IMAGE_NAME}:${AWS_ECR_PUBLIC_IMAGE_TAG_NODE}-python${AWS_ECR_PUBLIC_IMAGE_TAG_PYTHON}",
   ]

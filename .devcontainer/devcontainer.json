@@ -5,8 +5,6 @@
       "ghcr.io/dev1-sg/devcontainers/common-utils:1": {},
       "ghcr.io/dev1-sg/devcontainers/docker-in-docker:latest": {},
       "ghcr.io/dev1-sg/devcontainers/aws-cli:1": {},
-      "ghcr.io/dev1-sg/devcontainers/github-cli:1": {},
-      "ghcr.io/dev1-sg/devcontainers/huggingface-cli:1": {},
       "ghcr.io/dev1-sg/devcontainers/terraform:1": {}
   },
   "customizations": {

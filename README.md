@@ -19,3 +19,7 @@ The **`src`** folder contains customizations and configurations that layer on to
 readme Docs are updated daily. Please check the regsitry gallery for the latest updates.
 
 [https://gallery.ecr.aws/dev1-sg/](https://gallery.ecr.aws/dev1-sg/)
+
+Features will no longer be added.
+
+Ongoing work will focus on maintaining and improving Docker images and tags for faster startup times and reproducibility.

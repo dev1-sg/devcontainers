@@ -1,0 +1,8 @@
+{
+  "id": "debian-cdktf",
+  "version": "1.0.0",
+  "name": "debian-cdktf",
+  "description": "",
+  "documentationURL": "https://github.com/dev1-sg/devcontainers/blob/main/src/templates/debian-cdktf/README.md",
+  "platforms": ["amd64", "arm64"]
+}
