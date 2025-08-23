@@ -2,22 +2,25 @@
   "image": "public.ecr.aws/dev1-sg/devcontainer/debian-cdktf:latest",
   "name": "dev1-sg-devcontainers",
   "features": {
-      "ghcr.io/dev1-sg/devcontainers/docker-in-docker:latest": {}
+    "ghcr.io/dev1-sg/devcontainers/docker-in-docker:latest": {}
   },
   "customizations": {
     "vscode": {
-      "settings": {"terminal.integrated.defaultProfile.linux": "zsh"}
-    },
-    "extensions": [
-      "github.codespaces",
-	  "ms-vscode-remote.remote-containers",
-      "ms-vscode.js-debug",
-      "ms-python.python",
-      "hashicorp.terraform",
-      "hashicorp.hcl"
-    ]
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "github.codespaces",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode.js-debug",
+        "ms-python.python",
+        "hashicorp.terraform",
+        "hashicorp.hcl"
+      ]
+    }
   },
   "containerUser": "vscode",
-  "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/vscode/dev1-sg-devcontainers,type=bind,consistency=cached", "workspaceFolder": "/home/vscode",
+  "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/vscode/dev1-sg-devcontainers,type=bind,consistency=cached",
+  "workspaceFolder": "/home/vscode",
   "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode"
 }
