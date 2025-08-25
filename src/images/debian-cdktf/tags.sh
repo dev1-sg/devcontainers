@@ -5,9 +5,9 @@ set -e
 debian=$(sed -n 's|.*debian:\([a-zA-Z]*\).*|\1|p' Dockerfile | head -1)
 python=$(sed -n 's|.*python:\([0-9]\+\.[0-9]\+\.[0-9]\+\).*|\1|p' Dockerfile | head -1)
 node=$(sed -n 's|.*node:\([0-9]\+\.[0-9]\+\.[0-9]\+\).*|\1|p' Dockerfile | head -1)
-golang=$(sed -n 's|.*node:\([0-9]\+\.[0-9]\+\.[0-9]\+\).*|\1|p' Dockerfile | head -1)
+golang=$(sed -n 's|.*golang:\([0-9]\+\.[0-9]\+\.[0-9]\+\).*|\1|p' Dockerfile | head -1)
 
-if [ -z "$debian" ] || [ -z "$python" ] || [ -z "$node" ]; then exit 1; fi
+if [ -z "$debian" ] || [ -z "$python" ] || [ -z "$node" ] || [ -z "$golang" ]; then exit 1; fi
 
 export AWS_ECR_PUBLIC_IMAGE_TAG="${debian}"
 export AWS_ECR_PUBLIC_IMAGE_TAG_DEBIAN="${debian}"

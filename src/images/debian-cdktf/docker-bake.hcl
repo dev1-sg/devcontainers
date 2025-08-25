@@ -38,7 +38,7 @@ variable "AWS_ECR_PUBLIC_IMAGE_TAG_NODE" {
   default = "node"
 }
 
-varialbe "AWS_ECR_PUBLIC_IMAGE_TAG_GO" {
+variable "AWS_ECR_PUBLIC_IMAGE_TAG_GO" {
   default = "golang"
 }
 
