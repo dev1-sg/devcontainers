@@ -38,6 +38,10 @@ variable "AWS_ECR_PUBLIC_IMAGE_TAG_NODE" {
   default = "node"
 }
 
+varialbe "AWS_ECR_PUBLIC_IMAGE_TAG_GO" {
+  default = "golang"
+}
+
 variable "AWS_ECR_PUBLIC_IMAGE_URI" {
   default = "public.ecr.aws/dev1-sg/devcontainer/debian-cdktf:latest"
 }
@@ -63,6 +67,7 @@ target "settings" {
   args = {
     PYTHON_VERSION = "${AWS_ECR_PUBLIC_IMAGE_TAG_PYTHON}",
     NODE_VERSION   = "${AWS_ECR_PUBLIC_IMAGE_TAG_NODE}"
+    GO_VERSION     = "${AWS_ECR_PUBLIC_IMAGE_TAG_GO}"
   }
 }
 
