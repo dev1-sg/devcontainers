@@ -55,6 +55,10 @@ ARG AWSCDK_VERSION=2.1026.0
 ARG CDKTF_VERSION=0.21.0
 ARG CDK8S_VERSION=2.201.5
 
+COPY --from=python /opt /opt
+COPY --from=python /usr/local/lib /usr/local/lib
+COPY --from=python /usr/local/bin /usr/local/bin
+
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     make build-essential
 
