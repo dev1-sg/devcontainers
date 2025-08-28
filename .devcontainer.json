@@ -1,5 +1,5 @@
 {
-  "image": "public.ecr.aws/dev1-sg/devcontainer/debian-cdktf:latest",
+  "image": "public.ecr.aws/dev1-sg/devcontainer/debian-base:latest",
   "name": "dev1-sg-devcontainers",
   "features": {
     "ghcr.io/dev1-sg/devcontainers/docker-in-docker:latest": {}
@@ -10,13 +10,14 @@
         "terminal.integrated.defaultProfile.linux": "zsh"
       },
       "extensions": [
-        "github.codespaces",
         "ms-vscode-remote.remote-containers",
-        "Google.geminicodeassist"
+        "github.codespaces",
+        "google.geminicodeassist"
       ]
     }
   },
   "containerUser": "root",
   "workspaceMount": "source=${localWorkspaceFolder}/,target=/root/dev1-sg-devcontainers,type=bind,consistency=cached",
-  "workspaceFolder": "/root"
+  "workspaceFolder": "/root",
+  "postCreateCommand": "sudo chown -R root:root /root"
 }
